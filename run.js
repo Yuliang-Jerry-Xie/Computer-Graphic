@@ -1,1 +1,13 @@
-
+setScene();
+addShapes();
+animate_sun();
+animate_mercury();
+animate_venus();
+animate_earth();
+animate_mars();
+animate_jupiter();
+animate_saturn();
+animate_uranus();
+animate_neptune();
+animate_pluto();
+window.addEventListener('resize',resizeScene);
