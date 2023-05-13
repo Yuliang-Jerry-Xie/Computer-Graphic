@@ -26,6 +26,8 @@ function animate_mercury(){
     mercury.position.y = 0;
     mercury.position.x = a*Math.sin(mer);
     mercury.position.z = a*Math.cos(mer);
+    controls.update();
+    renderer.render(scene, camera);
     requestAnimationFrame(animate_mercury);
 }
 
@@ -100,3 +102,130 @@ function animate_pluto(){
     pluto.position.z = i*Math.cos(plu);
     requestAnimationFrame(animate_pluto);
 }
+
+
+
+var speed = 0.005;
+
+function buildGui() {
+    gui = new dat.GUI();
+    var params = {
+      sunColor: [255, 191, 0],
+      mercuryColor: [0, 255, 255],
+      mercurySize: 1,
+      venusColor: [255, 215, 0],
+      venusSize: 1,
+      earthColor: [0, 10, 255],
+      earthSize: 1,
+      marsColor:[255, 157, 111],
+      marsSize: 1,
+      jupiterColor: [227, 220, 203],
+      jupiterSize: 1,
+      saturnColor: [226, 191, 125],
+      saturnSize: 1,
+      uranusColor: [172, 229, 238],
+      uranusSize: 1,
+      neptuneColor: [91, 93, 223],
+      neptuneSize: 1,
+      plutoColor: [247, 187, 123],
+      plutoSize: 1
+    };
+  
+    //Color
+    gui.addColor(params, 'sunColor').onChange(function (val) {
+      var hex = RGBToHex(val[0], val[1], val[2]);
+      sun.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'mercuryColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        mercury.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'venusColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        venus.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'earthColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        earth.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'marsColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        mars.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'jupiterColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        jupiter.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'saturnColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        saturn.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'uranusColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        uranus.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'neptuneColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        neptune.material.color.setHex(hex);
+    });
+
+    gui.addColor(params, 'plutoColor').onChange(function (val) {
+        var hex = RGBToHex(val[0], val[1], val[2]);
+        pluto.material.color.setHex(hex);
+    });
+
+  
+    //Size
+    gui.add(params, 'mercurySize', 0.1, 10).onChange(function (val) {
+        mercury.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'venusSize', 0.1, 10).onChange(function (val) {
+        venus.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'earthSize', 0.1, 10).onChange(function (val) {
+        earth.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'marsSize', 0.1, 10).onChange(function (val) {
+        mars.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'jupiterSize', 0.1, 10).onChange(function (val) {
+        jupiter.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'saturnSize', 0.1, 10).onChange(function (val) {
+        saturn.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'uranusSize', 0.1, 10).onChange(function (val) {
+        uranus.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'neptuneSize', 0.1, 10).onChange(function (val) {
+        neptune.scale.set(val, val, val);
+      });
+      
+      gui.add(params, 'plutoSize', 0.1, 10).onChange(function (val) {
+        pluto.scale.set(val, val, val);
+      });
+      
+
+
+    function RGBToHex(r, g, b) {
+      return (r << 16) | (g << 8) | b;
+    }
+  
+    gui.open();
+  }
+ 
