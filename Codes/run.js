@@ -10,4 +10,5 @@ animate_saturn();
 animate_uranus();
 animate_neptune();
 animate_pluto();
+buildGui();
 window.addEventListener('resize',resizeScene);
