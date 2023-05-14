@@ -2,9 +2,9 @@ var ambientlight;
 var cameralight;
 
 
-// var mtlloader = new THREE.MTLLoader();
-// mtlloader.setTexturePath("models/");
-// mtlloader.setPath("models/");
+var mtlloader = new THREE.MTLLoader();
+mtlloader.setTexturePath("models/");
+mtlloader.setPath("models/");
 
 // function loadTexture(loader,object){ //specify load object
 //     loader.load(object,function(mesh){
