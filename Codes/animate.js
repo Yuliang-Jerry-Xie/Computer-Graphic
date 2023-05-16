@@ -20,6 +20,7 @@ var mer = 5, ve = 3, ea = 4, ma = 5, ju = 6, sa = 7, ur = 8, ne = 9, plu = 10;
 //     requestAnimationFrame(animate);
 // }
 
+
 function animate_mercury(){
     mer += 1*Math.PI/1000;
     mercury.rotation.y += speed;
@@ -30,9 +31,8 @@ function animate_mercury(){
     renderer.render(scene, camera);
     requestAnimationFrame(animate_mercury);
 
-    if(selectedPlanet === 'mercury'){
-      mercury.position.x = 0;
-    }
+  
+    
 }
 
 function animate_venus(){
@@ -43,9 +43,8 @@ function animate_venus(){
     venus.position.z = b*Math.cos(ve);
     requestAnimationFrame(animate_venus);
 
-    if(selectedPlanet === 'venus'){
-      venus.position.x = 0;
-    }
+
+    
 }
 
 function animate_earth(){
@@ -56,9 +55,7 @@ function animate_earth(){
     earth.position.z = c*Math.cos(ea);
     requestAnimationFrame(animate_earth);
 
-    if(selectedPlanet === 'earth'){
-      earth.position.x = 0;
-    }
+    
 }
 
 function animate_mars(){
@@ -69,9 +66,6 @@ function animate_mars(){
     mars.position.z = d*Math.cos(ma);
     requestAnimationFrame(animate_mars);
 
-    if(selectedPlanet === 'mars'){
-      mars.position.x = 0;
-    }
 }
 
 function animate_jupiter(){
@@ -82,9 +76,7 @@ function animate_jupiter(){
     jupiter.position.z = e*Math.cos(ju);
     requestAnimationFrame(animate_jupiter);
 
-    if(selectedPlanet === 'jupiter'){
-      jupiter.position.x = 0;
-    }
+
 }
 
 function animate_saturn(){
@@ -95,9 +87,7 @@ function animate_saturn(){
     saturn.position.z = f*Math.cos(sa);
     requestAnimationFrame(animate_saturn);
 
-    if(selectedPlanet === 'saturn'){
-      saturn.position.x = 0;
-    }
+
 }
 
 function animate_uranus(){
@@ -107,22 +97,18 @@ function animate_uranus(){
     uranus.position.x = g*Math.sin(ur);
     uranus.position.z = g*Math.cos(ur);
     requestAnimationFrame(animate_uranus);
-    if(selectedPlanet === 'uranus'){
-      uranus.position.x = 0;
-    }
+  
 }
 
 function animate_neptune(){
     ne += 8*Math.PI/2000;
     neptune.rotation.y += speed;
     neptune.position.y = 0;
-    neptune.position.x = h*Math.sin(ju);
-    neptune.position.z = h*Math.cos(ju);
+    neptune.position.x = h*Math.sin(ne);
+    neptune.position.z = h*Math.cos(ne);
     requestAnimationFrame(animate_neptune);
 
-    if(selectedPlanet === 'neptune'){
-      neptune.position.x = 0;
-    }
+    
 }
 
 function animate_pluto(){
@@ -132,16 +118,12 @@ function animate_pluto(){
     pluto.position.x = i*Math.sin(plu);
     pluto.position.z = i*Math.cos(plu);
     requestAnimationFrame(animate_pluto);
-
-    if(selectedPlanet === 'pluto'){
-      pluto.position.x = 0;
-    }
+ 
 }
 
 
 
 var speed = 0.005;
-var selectedPlanet = null;
 
 function buildGui() {
     gui = new dat.GUI();
@@ -256,13 +238,6 @@ function buildGui() {
         pluto.scale.set(val, val, val);
       });
       
-
-      var mercuryButton = gui.add(params, 'mercuryButton').name('Mercury');
-      mercuryButton.onFinishChange(function(){
-        selectedPlanet = 'mercury';
-        showGuiPanel(selectedPlanet);
-
-      });
       
     function RGBToHex(r, g, b) {
       return (r << 16) | (g << 8) | b;
@@ -271,17 +246,3 @@ function buildGui() {
     gui.open();
   }
 
-  
-  function showGuiPanel(selectedPlanet) {
-    gui.__controllers.forEach(function (controller) {
-        controller.domElement.style.display = 'none';
-    });
-    if (selectedPlanet === 'mercury') {
-        gui.__controllers.forEach(function (controller) {
-            if (controller.property.includes('mercury')) {
-                controller.domElement.style.display = 'block';
-            }
-        });
-    } 
-
-}
